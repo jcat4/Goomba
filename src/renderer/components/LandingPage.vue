@@ -1,40 +1,53 @@
 <template>
-  <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
+  <div class="wrapper">
     <main>
-      <div class="left-side">
-        <span class="title">
-          Welcome to your new project!
-        </span>
-        <system-information></system-information>
-      </div>
+      <section class="left">
 
-      <div class="right-side">
-        <div class="doc">
-          <div class="title">Getting Started</div>
-          <p>
-            electron-vue comes packed with detailed documentation that covers everything from
-            internal configurations, using the project structure, building your application,
-            and so much more.
-          </p>
-          <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
+        <!--todo probably turn inputs into slots-->
+        <div class="item">
+          <div class="input-description">Output File Destination</div>
+          <div class="input-wrap">
+            <input type="text" class="input in--output-dest">
+            <div class="button--input">oi</div>
+          </div>
         </div>
-        <div class="doc">
-          <div class="title alt">Other Documentation</div>
-          <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
-          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
+
+        <div class="item">
+          <div class="input-description">Output File Name</div>
+          <div class="input-wrap">
+            <input type="text" class="input in--output-dest">
+          </div>
         </div>
-      </div>
+
+        <div class="item">
+          <FolderTree></FolderTree>
+        </div>
+
+      </section>
+
+      <section class="middle">
+        middle
+      </section>
+
+      <section class="right">
+        right
+      </section>
     </main>
+
+    <footer>
+      <div class="button--compile">
+        Compile!
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
+  import FolderTree from './LandingPage/FolderTree'
 
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
+    components: { FolderTree },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
@@ -43,8 +56,17 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+  $main-color: orange;
+
+  $main-padding: 10px;
+  $inner-padding: ($main-padding / 2);
+
+  $shadow-settings: 0 0 5px 1px rgba(0,0,0,0.1);
+
+  /*========= Main Window =========*/
 
   * {
     box-sizing: border-box;
@@ -52,77 +74,146 @@
     padding: 0;
   }
 
-  body { font-family: 'Source Sans Pro', sans-serif; }
-
-  #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    box-sizing: border-box;
   }
 
-  #logo {
-    height: auto;
-    margin-bottom: 20px;
-    width: 420px;
+  .wrapper {
+    height: 100vh;
+    width: 100vw;
   }
 
   main {
     display: flex;
     justify-content: space-between;
+    height: calc(100vh - 80px);
+    padding: $main-padding;
+    background: #fbfbfb;
   }
 
-  main > div { flex-basis: 50%; }
+  /*for testing*/
+  .block {
+    /*outline: 1px solid black;*/
+    margin: 5px;
+    margin: 0;
+  }
 
-  .left-side {
+  /*========= Left, Middle, Right, Bottom Pieces =========*/
+
+  .left {
+    /*background: red;*/
+    padding-right: $inner-padding;
+  }
+
+  .middle {
+    background: white;
+    width: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 0 $inner-padding;
+  }
+
+  .right {
+    padding-left: $inner-padding;
+    background: blue;
+  }
+
+  .left, .right {
+    width: 50%;
+    min-width: 250px;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid black;
     display: flex;
-    flex-direction: column;
+    z-index: 50;
+    // todo set background or some other styling
   }
 
-  .welcome {
-    color: #555;
-    font-size: 23px;
-    margin-bottom: 10px;
+  /*========= Global =========*/
+
+  .item {
+
   }
 
-  .title {
-    color: #2c3e50;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 6px;
+  .item:not(:first-of-type) {
+    margin-top: $main-padding;
   }
 
-  .title.alt {
-    font-size: 18px;
-    margin-bottom: 10px;
+  /*========= Inputs =========*/
+
+  $wrap-height: 30px;
+  $input-height: 25px;
+
+  .input-wrap {
+    height: $wrap-height;
+    border-radius: 5px;
+    background: white;
+    -webkit-box-shadow: $shadow-settings;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    /*border: 1px solid green;*/
   }
 
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
-
-  .doc button {
-    font-size: .8em;
-    cursor: pointer;
+  .input {
+    /*width: 80%;*/
+    flex-grow: 1;
     outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #4fc08d;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #4fc08d;
+    border: none;
+    /*border: 1px solid lightgrey;*/
+    border-radius: 5px;
+    /*-webkit-box-shadow: $shadow-settings;*/
+    height: $input-height;
+    /*display: inline-block;*/
+    font-size: 1em;
+    /*background: blue;*/
+    margin-right: 5px;
   }
 
-  .doc button.alt {
-    color: #42b983;
-    background-color: transparent;
+  .input-description {
+    color: grey;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+
+
+  /*========= Buttons =========*/
+
+  $compile-btn-height: 40px;
+
+  .button--compile {
+    background: #4edd6b;
+    color: white;
+    border-radius: 500px;
+    line-height: $compile-btn-height;
+    height: $compile-btn-height;
+    width: 50%;
+    min-width: 130px;
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    -webkit-box-shadow: $shadow-settings;
+  }
+
+  .button--compile:active,
+  .button--compile:hover {
+    cursor: pointer;
+  }
+
+  .button--input {
+    width: $input-height;
+    height: $input-height;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+    line-height: $input-height;
+    border: 1px solid $main-color;
+    cursor: pointer;
   }
 </style>
