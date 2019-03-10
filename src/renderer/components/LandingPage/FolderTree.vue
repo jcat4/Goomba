@@ -20,19 +20,23 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "../../global_vars";
+
   nav {
-    border-radius: 5px 5px 0 0;
-    background-color: orange;
+    border-radius: $border-rad $border-rad 0 0;
+    background-color: $main-color;
     height: 30px;
   }
 
   main {
-    height: auto;
+    height: 100%;
+    flex-grow: 1;
   }
 
   .wrap {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
-    height: 200px;
+    border-radius: $border-rad;
+    -webkit-box-shadow: $shadow-settings;
+    height: 100%;
+    @extend .flex-grow;
   }
 </style>

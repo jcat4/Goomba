@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <main>
+    <main class="main-wrap">
       <section class="left">
 
         <!--todo probably turn inputs into slots-->
@@ -19,7 +19,11 @@
           </div>
         </div>
 
-        <div class="item">
+        <div class="item folder-tree">
+          <FolderTree></FolderTree>
+        </div>
+
+        <div class="item file-select">
           <FolderTree></FolderTree>
         </div>
 
@@ -58,13 +62,8 @@
 
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  @import "../global_vars";
 
-  $main-color: orange;
-
-  $main-padding: 10px;
-  $inner-padding: ($main-padding / 2);
-
-  $shadow-settings: 0 0 5px 1px rgba(0,0,0,0.1);
 
   /*========= Main Window =========*/
 
@@ -84,7 +83,7 @@
     width: 100vw;
   }
 
-  main {
+  .main-wrap {
     display: flex;
     justify-content: space-between;
     height: calc(100vh - 80px);
@@ -100,6 +99,11 @@
   }
 
   /*========= Left, Middle, Right, Bottom Pieces =========*/
+
+  .left, .middle, .right {
+    display: flex;
+    flex-flow: column;
+  }
 
   .left {
     /*background: red;*/
@@ -152,7 +156,7 @@
 
   .input-wrap {
     height: $wrap-height;
-    border-radius: 5px;
+    border-radius: $border-rad;
     background: white;
     -webkit-box-shadow: $shadow-settings;
     display: flex;
@@ -167,7 +171,7 @@
     outline: none;
     border: none;
     /*border: 1px solid lightgrey;*/
-    border-radius: 5px;
+    border-radius: $border-rad;
     /*-webkit-box-shadow: $shadow-settings;*/
     height: $input-height;
     /*display: inline-block;*/
@@ -210,10 +214,20 @@
     width: $input-height;
     height: $input-height;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: $border-rad;
     text-align: center;
     line-height: $input-height;
     border: 1px solid $main-color;
     cursor: pointer;
+  }
+
+  /*========= Item Wrappers =========*/
+
+  .folder-tree {
+    height: 20%;
+  }
+
+  .file-select {
+    @extend .flex-grow;
   }
 </style>

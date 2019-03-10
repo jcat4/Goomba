@@ -1,0 +1,23 @@
+/* =============== GLOBAL =============== */
+
+$main-color: orange;
+
+$main-padding: 10px;
+$inner-padding: ($main-padding / 2);
+
+$border-rad: 5px;
+
+$shadow-settings: 0 0 5px 1px rgba(0,0,0,0.1);
+
+
+/* =============== CLASSES =============== */
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-grow {
+  @extend .flex-column;
+  flex-grow: 1;
+}
