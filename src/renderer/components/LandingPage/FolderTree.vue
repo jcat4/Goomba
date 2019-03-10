@@ -23,20 +23,16 @@
   @import "../../global_vars";
 
   nav {
-    border-radius: $border-rad $border-rad 0 0;
-    background-color: $main-color;
-    height: 30px;
+    @extend .item-nav;
   }
 
   main {
-    height: 100%;
-    flex-grow: 1;
+    /*height: 100%;*/
   }
 
   .wrap {
     border-radius: $border-rad;
     -webkit-box-shadow: $shadow-settings;
     height: 100%;
-    @extend .flex-grow;
   }
 </style>

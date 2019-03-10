@@ -24,7 +24,7 @@
         </div>
 
         <div class="item file-select">
-          <FolderTree></FolderTree>
+          <FileSelect></FileSelect>
         </div>
 
       </section>
@@ -48,10 +48,11 @@
 
 <script>
   import FolderTree from './LandingPage/FolderTree'
+  import FileSelect from './LandingPage/FileSelect'
 
   export default {
     name: 'landing-page',
-    components: { FolderTree },
+    components: { FolderTree, FileSelect },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)

@@ -9,8 +9,17 @@ $border-rad: 5px;
 
 $shadow-settings: 0 0 5px 1px rgba(0,0,0,0.1);
 
-
 /* =============== CLASSES =============== */
+
+// General UI Stuff
+
+.item-nav {
+  border-radius: $border-rad $border-rad 0 0;
+  background-color: $main-color;
+  height: 30px;
+}
+
+// Flex Utils
 
 .flex-column {
   display: flex;
