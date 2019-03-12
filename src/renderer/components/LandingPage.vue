@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
     <main class="main-wrap">
+
+      <!-- ======================== LEFT ======================== -->
       <section class="left">
 
         <!--todo probably turn inputs into slots-->
@@ -29,10 +31,22 @@
 
       </section>
 
+      <!-- ======================== MIDDLE ======================== -->
       <section class="middle">
-        middle
+        <div class="button--add-remove">
+          Add
+        </div>
+
+        <div class="button--add-remove">
+          Remove
+        </div>
+
+        <div class="button--clear">
+          Clear
+        </div>
       </section>
 
+      <!-- ======================== RIGHT ======================== -->
       <section class="right">
         right
       </section>
@@ -117,6 +131,7 @@
     min-width: 100px;
     max-width: 200px;
     padding: 0 $inner-padding;
+    justify-content: flex-end;
   }
 
   .right {
@@ -222,10 +237,40 @@
     cursor: pointer;
   }
 
+  .middle div {
+    margin-top: $main-padding;
+  }
+
+  .button--add-remove {
+    border-radius: 500px;
+    -webkit-box-shadow: $shadow-settings;
+    padding: 5px;
+    text-align: center;
+    background-color: $main-color;
+    color: white;
+  }
+
+  .button--add-remove:hover,
+  .button--add-remove:active {
+    cursor: pointer;
+  }
+
+  .button--clear {
+    border-radius: 500px;
+    border: 1.5px solid $main-color;
+    text-align: center;
+    color: $main-color
+  }
+
+  .button--clear:hover,
+  .button--clear:active {
+    cursor: pointer;
+  }
+
   /*========= Item Wrappers =========*/
 
   .folder-tree {
-    height: 20%;
+    height: 30%;
   }
 
   .file-select {
