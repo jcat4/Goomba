@@ -1,6 +1,6 @@
 /* =============== GLOBAL =============== */
 
-$main-color: orange;
+$main-color: #ffc34d;
 
 $main-padding: 10px;
 $inner-padding: ($main-padding / 2);
@@ -21,6 +21,7 @@ $shadow-settings: 0 0 5px 1px rgba(0,0,0,0.1);
 
 // Flex Utils
 
+// todo may not need, just have flex-grow?
 .flex-column {
   display: flex;
   flex-flow: column;

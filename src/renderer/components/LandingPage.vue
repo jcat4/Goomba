@@ -9,15 +9,15 @@
         <div class="item">
           <div class="input-description">Output File Destination</div>
           <div class="input-wrap">
-            <input type="text" class="input in--output-dest">
-            <div class="button--input">oi</div>
+            <input type="text" class="input">
+            <div class="button--input"></div>
           </div>
         </div>
 
         <div class="item">
           <div class="input-description">Output File Name</div>
           <div class="input-wrap">
-            <input type="text" class="input in--output-dest">
+            <input type="text" class="input">
           </div>
         </div>
 
@@ -48,7 +48,17 @@
 
       <!-- ======================== RIGHT ======================== -->
       <section class="right">
-        right
+        <div class="item">
+          <div class="input-check-wrap">
+            <input type="checkbox" class="checkbox">
+            <!--<span class="checkmark"></span>-->
+            <div class="input-description">Splash Screen</div>
+          </div>
+          <div class="input-wrap">
+            <input type="text" class="input">
+            <div class="button--input"></div>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -91,6 +101,7 @@
   body {
     font-family: 'Source Sans Pro', sans-serif;
     box-sizing: border-box;
+    overflow-y: hidden;
   }
 
   .wrapper {
@@ -121,12 +132,10 @@
   }
 
   .left {
-    /*background: red;*/
     padding-right: $inner-padding;
   }
 
   .middle {
-    background: white;
     width: 50%;
     min-width: 100px;
     max-width: 200px;
@@ -136,7 +145,6 @@
 
   .right {
     padding-left: $inner-padding;
-    background: blue;
   }
 
   .left, .right {
@@ -149,7 +157,7 @@
     bottom: 0;
     width: 100%;
     height: 80px;
-    border-top: 1px solid black;
+    border-top: 1px solid #f2f2f2;
     display: flex;
     z-index: 50;
     // todo set background or some other styling
@@ -178,21 +186,15 @@
     display: flex;
     align-items: center;
     padding: 0 5px;
-    /*border: 1px solid green;*/
   }
 
   .input {
-    /*width: 80%;*/
     flex-grow: 1;
     outline: none;
     border: none;
-    /*border: 1px solid lightgrey;*/
     border-radius: $border-rad;
-    /*-webkit-box-shadow: $shadow-settings;*/
     height: $input-height;
-    /*display: inline-block;*/
     font-size: 1em;
-    /*background: blue;*/
     margin-right: 5px;
   }
 
@@ -200,8 +202,24 @@
     color: grey;
     font-size: 0.8rem;
     margin-bottom: 3px;
+    display: inline-block;
   }
 
+  .input-check-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+
+  .input-check-wrap > input {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 5px;
+    background-color: #eee;
+  }
 
   /*========= Buttons =========*/
 
@@ -233,7 +251,7 @@
     border-radius: $border-rad;
     text-align: center;
     line-height: $input-height;
-    border: 1px solid $main-color;
+    border: 2px solid $main-color;
     cursor: pointer;
   }
 
@@ -244,7 +262,7 @@
   .button--add-remove {
     border-radius: 500px;
     -webkit-box-shadow: $shadow-settings;
-    padding: 5px;
+    padding: 7px;
     text-align: center;
     background-color: $main-color;
     color: white;
@@ -267,7 +285,7 @@
     cursor: pointer;
   }
 
-  /*========= Item Wrappers =========*/
+  /*========= Component Item Wrappers =========*/
 
   .folder-tree {
     height: 30%;
