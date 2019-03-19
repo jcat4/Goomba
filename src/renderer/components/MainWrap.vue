@@ -59,6 +59,24 @@
             <div class="button--input"></div>
           </div>
         </div>
+
+        <div class="item">
+        <div class="input-description">Configs</div>
+        <div class="load-save">
+          <span class="button--load-save">Load</span>
+          <span class="input-wrap--inline">
+            <input type="text" class="input">
+            <div class="button--input"></div>
+          </span>
+        </div>
+          <div class="load-save">
+            <span class="button--load-save">Save</span>
+            <span class="input-wrap--inline">
+            <input type="text" class="input">
+            <div class="button--input"></div>
+          </span>
+          </div>
+      </div>
       </section>
     </main>
 
@@ -71,11 +89,11 @@
 </template>
 
 <script>
-  import FolderTree from './LandingPage/FolderTree'
-  import FileSelect from './LandingPage/FileSelect'
+  import FolderTree from './MainWrap/FolderTree'
+  import FileSelect from './MainWrap/FileSelect'
 
   export default {
-    name: 'landing-page',
+    name: 'main-wrap',
     components: { FolderTree, FileSelect },
     methods: {
       open (link) {
@@ -169,6 +187,10 @@
 
   }
 
+  .item--flex {
+    display: flex;
+  }
+
   .item:not(:first-of-type) {
     margin-top: $main-padding;
   }
@@ -188,6 +210,14 @@
     padding: 0 5px;
   }
 
+  .input-wrap--inline {
+    @extend .input-wrap;
+    display: inline-flex;
+    margin-left: $main-padding;
+    flex-grow: 1;
+    min-width: 0;
+  }
+
   .input {
     flex-grow: 1;
     outline: none;
@@ -196,7 +226,8 @@
     height: $input-height;
     font-size: 1em;
     margin-right: 5px;
-  }
+    min-width: 0;
+    }
 
   .input-description {
     color: grey;
@@ -245,6 +276,7 @@
   }
 
   .button--input {
+    min-width: $input-height; // need this for inline inputs
     width: $input-height;
     height: $input-height;
     display: inline-block;
@@ -285,6 +317,24 @@
     cursor: pointer;
   }
 
+  $load-save-btn-height: $input-height + 5; // account for input "padding" :/
+
+  .button--load-save {
+    background-color: $main-color;
+    color: white;
+    display: inline-block;
+    border-radius: 500px;
+    height: $load-save-btn-height;
+    line-height: $load-save-btn-height;
+    min-width: 60px;
+    text-align: center
+  }
+
+  .button--load-save:hover,
+  .button--load-save:active {
+    cursor: pointer;
+  }
+
   /*========= Component Item Wrappers =========*/
 
   .folder-tree {
@@ -293,5 +343,14 @@
 
   .file-select {
     @extend .flex-grow;
+  }
+
+  .load-save {
+    display: flex;
+    align-items: center;
+  }
+
+  .load-save:last-of-type {
+    margin-top: $main-padding;
   }
 </style>
