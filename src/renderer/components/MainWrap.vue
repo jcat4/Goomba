@@ -10,7 +10,9 @@
                     <div class="input-description">Output File Destination</div>
                     <div class="input-wrap">
                         <input type="text" class="input">
-                        <div class="button--input"></div>
+                        <div class="button--input">
+                            <font-awesome-icon icon="folder" />
+                        </div>
                     </div>
                 </div>
 
@@ -56,7 +58,9 @@
                     </div>
                     <div class="input-wrap">
                         <input type="text" class="input">
-                        <div class="button--input"></div>
+                        <div class="button--input">
+                            <font-awesome-icon icon="folder" />
+                        </div>
                     </div>
                 </div>
 
@@ -66,14 +70,18 @@
                         <span class="button--load-save">Load</span>
                         <span class="input-wrap--inline">
                             <input type="text" class="input">
-                            <div class="button--input"></div>
+                            <div class="button--input">
+                                 <font-awesome-icon icon="folder" />
+                            </div>
                         </span>
                     </div>
                     <div class="load-save">
                         <span class="button--load-save">Save</span>
                         <span class="input-wrap--inline">
                             <input type="text" class="input">
-                            <div class="button--input"></div>
+                            <div class="button--input">
+                                 <font-awesome-icon icon="folder" />
+                            </div>
                         </span>
                     </div>
                 </div>
@@ -290,6 +298,7 @@
         line-height: $input-height;
         border: 2px solid $main-color;
         cursor: pointer;
+        color: $main-color;
     }
 
     .middle div {
