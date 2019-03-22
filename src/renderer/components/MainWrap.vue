@@ -4,13 +4,12 @@
 
             <!-- ======================== LEFT ======================== -->
             <section class="left">
-
                 <!--todo probably turn inputs into slots-->
                 <div class="item">
                     <div class="input-description">Output File Destination</div>
                     <div class="input-wrap">
                         <input type="text" class="input">
-                        <div class="button--input">
+                        <div class="button--input" @click="setOutputDir">
                             <font-awesome-icon icon="folder" />
                         </div>
                     </div>
@@ -105,12 +104,18 @@
     import FileSelect from './MainWrap/FileSelect'
     import FinalList from './MainWrap/FinalList'
 
+    const electron = require("electron")
+    const dialog = electron.remote.dialog
+
     export default {
         name: 'main-wrap',
         components: {FolderTree, FileSelect, FinalList},
         methods: {
-            open(link) {
-                this.$electron.shell.openExternal(link)
+            openFolder() {
+                return dialog.showOpenDialog({ properties: ['openDirectory'] })
+            },
+            setOutputDir() {
+                console.log(this.openFolder())
             }
         }
     }
@@ -119,7 +124,6 @@
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
     @import "../global_vars";
-
 
     /*========= Main Window =========*/
 
